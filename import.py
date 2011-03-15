@@ -126,12 +126,28 @@ while True:
 		if status != 'draft':
 			
 			try:
-				cursor.execute("INSERT INTO mt_entry (entry_title, entry_basename, entry_blog_id, entry_created_on, entry_authored_on, entry_status, entry_channel, entry_author_id, entry_text, entry_text_more, entry_keywords, entry_excerpt,entry_photo_credit, entry_subchannel, entry_thumbnail) VALUES (%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,'', '', '')", [convert_chars(title), convert_chars(basename), 1, date, date, 2, 'Daily Dish', 4750, convert_chars(body), convert_chars(extended), convert_chars(keywords), convert_chars(excerpt)])
+				cursor.execute("INSERT INTO mt_entry (entry_title, entry_basename, entry_blog_id, entry_created_on, entry_authored_on, entry_status, entry_author_id, entry_text, entry_text_more, entry_keywords, entry_excerpt) VALUES (%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", [convert_chars(title), convert_chars(basename), 1, date, date, 2,  4750, convert_chars(body), convert_chars(extended), convert_chars(keywords), convert_chars(excerpt)])
 				transaction.commit_unless_managed()
 			except Warning as war:
 				total_errors = total_errors + 1
 				print(war)
-				print ("INSERT INTO mt_entry (entry_title, entry_basename, entry_blog_id, entry_created_on, entry_authored_on, entry_status, entry_channel, entry_author_id, entry_text, entry_text_more, entry_keywords, entry_excerpt,entry_photo_credit, entry_subchannel, entry_thumbnail) VALUES (%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,'', '', '')", [convert_chars(title), convert_chars(basename), 1, date, date, 2, 'Daily Dish', 4750, convert_chars(body), convert_chars(extended), convert_chars(keywords), convert_chars(excerpt)])
+				#pdb.set_trace()
+				#print("\r\r")
+				print ('INSERT INTO mt_entry (entry_title, entry_basename, entry_blog_id, entry_created_on, entry_authored_on, entry_status, entry_author_id, entry_text, entry_text_more, entry_keywords, entry_excerpt) VALUES (%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s)' %
+				(
+					convert_chars(title), 
+					convert_chars(basename), 
+					1, 
+					date, 
+					date, 
+					2, 
+					4750, 
+					convert_chars(body), 
+					convert_chars(extended), 
+					convert_chars(keywords), 
+					convert_chars(excerpt)
+				))
+
 
 			
 		line_number=0
