@@ -1,4 +1,4 @@
-Import script to take a Tyeppad/MT export file and import it to another instance of MT. 
+Import script to take a Typepad/MT export file and import it to another instance of MT. 
 
 Movable Type tends to choke while importing large export files, and this script gets around that issue by parsing out the MT/Typepad export file format.  Typepad also munges unicode characters during export, so this script tries to convert a number of those to HTML entities wherever possible.  Certainly not exhaustive, but it covers a majority of Western accents.  
 
